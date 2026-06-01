@@ -1,0 +1,5 @@
+{
+  "redis_cache": "redis://127.0.0.1:13400",
+  "redis_queue": "redis://127.0.0.1:13401",
+  "redis_socketio": "redis://127.0.0.1:13402"
+}

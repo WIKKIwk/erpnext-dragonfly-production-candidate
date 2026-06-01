@@ -1,0 +1,13 @@
+diff --git a/frappe/utils/redis_wrapper.py b/frappe/utils/redis_wrapper.py
+index 1f02ebb..a3a96ff 100644
+--- a/frappe/utils/redis_wrapper.py
++++ b/frappe/utils/redis_wrapper.py
+@@ -426,6 +426,8 @@ class _TrackedConnection(redis.Connection):
+ 				frappe.client_cache.healthy = False
+ 			elif "unknown subcommand" in str(e).lower():
+ 				raise Exception("Redis version is not supported, upgrade to Redis 6.0 or higher.")
++			elif "client tracking is currently not supported" in str(e).lower() or "syntax error" in str(e).lower():
++				frappe.client_cache.healthy = False
+ 			else:
+ 				raise
+ 

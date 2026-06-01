@@ -1,0 +1,11 @@
+.env
+dragonfly-full/
+*.log
+*.pid
+*.rdb
+*.dfs
+*.sqlite
+*.bak
+*.backup
+__pycache__/
+.pytest_cache/
