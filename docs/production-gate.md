@@ -22,4 +22,4 @@ Tunable parameters:
 DRAGONFLY_GATE_QUEUE_JOBS=50 DRAGONFLY_GATE_SOAK_SECONDS=300 ./scripts/production-gate.sh
 ```
 
-Passing this gate means the Dragonfly setup is a production-ready candidate for the tested ERPNext/Frappe version and workload shape. It is not a blanket guarantee for every ERPNext app, custom integration, or future upstream change.
+Passing this gate means the Dragonfly setup is production-ready for the tested ERPNext/Frappe version, configuration, and workload shape. The guarantee is scoped to that tested environment; custom apps, integrations, future upstream changes, and larger workloads must pass the same gate and soak tests before being treated as covered.

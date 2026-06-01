@@ -1,8 +1,8 @@
 # ERPNext Dragonfly Production Candidate
 
-Experimental tooling for running ERPNext/Frappe with Dragonfly as a Redis-compatible backend.
+Production-ready candidate tooling for running ERPNext/Frappe with Dragonfly as a Redis-compatible backend.
 
-This repository provides a second production candidate path, not an upstream-supported ERPNext default. It is intended for controlled testing before live use.
+This repository provides a second production path, not an upstream-supported ERPNext default. It is intended for controlled production adoption through a repeatable gate.
 
 ## What It Replaces
 
@@ -16,10 +16,20 @@ redis_socketio -> redis://127.0.0.1:13402
 
 ## Current Status
 
-- Full Redis endpoint replacement: experimental production candidate
+- Full Redis endpoint replacement: production-ready candidate after passing the production gate
 - Cache-only Dragonfly mode: lower-risk candidate
 - ERPNext/Frappe client tracking fallback patch: required for tested Frappe versions that reject Dragonfly's client tracking behavior
 - Docker is not required
+
+## Production Readiness
+
+This setup is considered production-ready for an environment only after its production gate passes in that same environment:
+
+```bash
+./scripts/production-gate.sh
+```
+
+The gate verifies Dragonfly command compatibility, ERPNext health, clear-cache, worker health, background job enqueue, and a short soak loop.
 
 ## Requirements
 
@@ -100,7 +110,7 @@ The patch keeps Frappe running when Dragonfly rejects the Redis client tracking 
 
 ## Safety Notes
 
-- Do not run this on a critical production instance without backups and a rollback window.
+- Run this on a critical production instance only with backups and a rollback window.
 - Keep queue and socket.io Dragonfly instances persistent.
 - Cache can run with `--cache_mode=true`.
 - Validate background jobs with `bench --site <site> doctor` and an enqueue test.
