@@ -1,6 +1,7 @@
 # Production Checklist
 
 - Apply the Frappe client tracking fallback patch.
+- Install Dragonfly from the official release with `./scripts/install-dragonfly.sh`.
 - Confirm `dragonfly --version`.
 - Confirm `redis-cli -p <port> PING` for all three Dragonfly instances.
 - Run `./scripts/dragonfly-full-check.sh`.

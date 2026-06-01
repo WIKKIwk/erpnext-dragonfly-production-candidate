@@ -24,13 +24,18 @@ redis_socketio -> redis://127.0.0.1:13402
 ## Requirements
 
 - A working ERPNext/Frappe bench
-- `dragonfly` installed and available in `PATH`
 - `redis-cli`
 - `jq`
 - `curl`
 - user-level `systemd` for service mode
 
 ## Quick Start
+
+Install Dragonfly from the official upstream release:
+
+```bash
+./scripts/install-dragonfly.sh
+```
 
 Copy `.env.example` to `.env` and adjust paths:
 
@@ -63,6 +68,12 @@ Run a soak test:
 ./scripts/dragonfly-full-soak-test.sh 300
 ```
 
+One-command bootstrap after `.env` is configured:
+
+```bash
+./scripts/bootstrap-erpnext-dragonfly.sh
+```
+
 Rollback:
 
 ```bash
@@ -91,4 +102,4 @@ The patch keeps Frappe running when Dragonfly rejects the Redis client tracking 
 
 ## License
 
-The tooling in this repository is released under the MIT License. Dragonfly, ERPNext, and Frappe have their own licenses.
+The tooling in this repository is released under the MIT License. Dragonfly, ERPNext, and Frappe have their own licenses. This repository does not redistribute Dragonfly binaries.
