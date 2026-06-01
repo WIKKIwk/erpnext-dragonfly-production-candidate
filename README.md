@@ -68,6 +68,12 @@ Run a soak test:
 ./scripts/dragonfly-full-soak-test.sh 300
 ```
 
+Run the production gate:
+
+```bash
+./scripts/production-gate.sh
+```
+
 One-command bootstrap after `.env` is configured:
 
 ```bash
